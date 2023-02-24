@@ -1,21 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
 
-  <div>
-    <h4 class="red" :style="styles[0]">{{products[0]}}</h4>
-    <p>{{ price1 }} pounds</p>
+  <div class="menu">
+    <a v-for="(a) in navs" :key="a">{{ a }}</a>
   </div>
 
-
   <div>
-    <h4 class="red" :style="styles[1]">{{products[1]}}</h4>
-    <p>{{ price2 }} pounds</p>
-  </div>
-
-
-  <div>
-    <h4 class="red" :style="styles[2]">{{products[2]}}</h4>
-    <p>{{ price3 }} pounds</p>
+    <h4 v-for="
+      (listing, i) in listings" :key="listing"
+      class="red">{{i}}: {{listing}}</h4>
   </div>
 
 </template>
@@ -25,11 +17,13 @@ export default {
   name: "App",
   data() {
     return {
-      price1: 1250,
-      price2: 1100,
-      price3: 1300,
-      products: ['Canary Wharf', 'Bermondsey', 'Islington'],
-      styles: ['color: blue', 'color: red', 'color: green']
+      nav: ['Home', 'Shop', 'About'],
+      listings: {
+        'Canary Wharf': 1250,
+        'Bermondsey': 1300,
+        'Islington': 1100,
+      },
+      styles: ['color: blue', 'color: red', 'color: green'],
     }
   },
   components: {
@@ -45,6 +39,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.menu { 
+  background: darkslateblue;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.menu a {
+  color: white;
+  padding: 5px;
 }
 </style>
