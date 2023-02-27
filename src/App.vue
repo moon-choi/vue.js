@@ -14,6 +14,8 @@
     <a v-for="(link) in nav" :key="link">{{ link }}</a>
   </div>
 
+  <Discount/>
+
   <div v-for="(property, i) in properties" :key="i">
     <img :src="property.image" class="room-img">
     <h4 @click="modal = true; opened=i">{{ property.title }}</h4>
@@ -25,7 +27,8 @@
 </template>
 
 <script>
-import data from './properties.js'
+import data from './properties.js';
+import Discount from './Discount.vue'; //1. import하기
 
 export default {
   name: "App",
@@ -48,7 +51,9 @@ export default {
       this.modal = false;
     }
   },
+  // 2. 등록하기
   components: {
+    Discount,
   },
 };
 </script>
@@ -60,6 +65,13 @@ body {
 
 div {
   box-sizing: border-box;
+}
+
+.discount {
+  background: lightgrey;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .black-bg {
