@@ -1,15 +1,5 @@
 <template>
-  <!-- 모달창 -->
-  <div class="black-bg" v-if="modal == true">
-    <!-- if 조건식이 참일때만 밑이 나옴. -->
-    <div class="white-bg">
-      <button @click="close"> X </button>
-      <h4>{{ properties[opened].title }}</h4>
-      <p>{{ properties[opened].content }}</p>
-      <p>{{ properties[opened].price}} pounds</p>
-    </div>
-  </div>
-
+  <Modal/>
   <div class="menu">
     <a v-for="(link) in nav" :key="link">{{ link }}</a>
   </div>
@@ -29,6 +19,7 @@
 <script>
 import data from './properties.js';
 import Discount from './Discount.vue'; //1. import하기
+import Modal from './Modal.vue';
 
 export default {
   name: "App",
@@ -53,6 +44,7 @@ export default {
   },
   // 2. 등록하기
   components: {
+    Modal,
     Discount,
   },
 };
