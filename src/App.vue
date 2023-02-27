@@ -8,31 +8,17 @@
     </div>
   </div>
   <div class="menu">
-    <a v-for="(a) in nav" :key="a">{{ a }}</a>
+    <a v-for="(link) in nav" :key="link">{{ link }}</a>
   </div>
 <div>{{ data }}</div>
-  <div>
-    <img src="./assets/room0.jpg" class="room-img">
-    <h4 @click="modal = true">{{properties[0].title}}</h4>
-    <p>{{properties[0].price}} pounds</p>
+  <div v-for="(property) in properties" :key="property.id">
+    <img :src="property.image" class="room-img">
+    <h4 @click="modal = true">{{property.title}}</h4>
+    <p>{{property.price}} pounds</p>
     <button @click="nums[0] +=1">Report</button><span> Reported: {{ nums[0] }}</span>
-  </div> 
-  <!-- @mouseover -->
-  <!-- vue-on 은  @으로 대체 가능. event handler -->
+  </div>
 
-  <div>
-    <img src="./assets/room1.jpg" class="room-img">
-    <h4 @click="modal = true">{{properties[1].title}}</h4>
-    <p>{{properties[1].price}} pounds</p>
-    <button @click="nums[1] +=1">Report</button><span> Reported: {{ nums[1] }}</span>
-  </div>
-  
-  <div>
-    <img src="./assets/room2.jpg" class="room-img">
-    <h4 @click="modal = true">{{properties[2].title}}</h4>
-    <p>{{properties[2].price}} pounds</p>
-    <button @click="nums[2] +=1">Report</button><span> Reported: {{ nums[2] }}</span>
-  </div>
+  <!-- @mouseover: vue-on 은  @으로 대체 가능. event handler -->
 </template>
 
 <script>
@@ -88,7 +74,7 @@ div {
 }
 
 .room-img {
-  width: 100%;
+  width: 50%;
   margin-top: 40px;
 }
 
