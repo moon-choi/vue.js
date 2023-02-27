@@ -8,7 +8,7 @@
     <h4 v-for="
       (listing, i) in listings" :key="listing"
       class="red">{{i}}: {{listing}} pounds</h4>
-      <button @click= "increase">Report</button><span>reported: {{ num }}</span>
+      <button @click= "increase">Report</button><span> Reported: {{ num }}</span>
       <!-- @mouseover -->
   </div>
 
