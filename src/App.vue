@@ -7,7 +7,9 @@
   <div>
     <h4 v-for="
       (listing, i) in listings" :key="listing"
-      class="red">{{i}}: {{listing}}</h4>
+      class="red">{{i}}: {{listing}} pounds</h4>
+      <button @click= "increase">Report</button><span>reported: {{ num }}</span>
+      <!-- @mouseover -->
   </div>
 
 </template>
@@ -17,6 +19,7 @@ export default {
   name: "App",
   data() {
     return {
+      num: 0,
       nav: ['Home', 'Shop', 'About'],
       listings: {
         'Canary Wharf': 1250,
@@ -26,6 +29,12 @@ export default {
       styles: ['color: blue', 'color: red', 'color: green'],
     }
   },
+  // 함수 만드는 공간
+  methods: {
+    increase(){
+      this.num += 1;
+    }
+  }, 
   components: {
 
   },
@@ -41,7 +50,7 @@ export default {
   color: #2c3e50;
 }
 
-.menu { 
+.menu {
   background: darkslateblue;
   padding: 15px;
   border-radius: 5px;
