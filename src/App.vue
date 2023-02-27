@@ -1,21 +1,24 @@
 <template>
-
- <!-- 모달창 -->
-  <div class="black-bg" v-if="modal == true"> 
+  <!-- 모달창 -->
+  <div class="black-bg" v-if="modal == true">
     <!-- if 조건식이 참일때만 밑이 나옴. -->
     <div class="white-bg">
-<button @click="close">X</button>
+      <button @click="close"> X </button>
+      <h4>{{ properties[opened].title }}</h4>
+      <p>{{ properties[opened].content }}</p>
+      <p>{{ properties[opened].price}} pounds</p>
     </div>
   </div>
+
   <div class="menu">
     <a v-for="(link) in nav" :key="link">{{ link }}</a>
   </div>
-<div>{{ data }}</div>
-  <div v-for="(property) in properties" :key="property.id">
+
+  <div v-for="(property, i) in properties" :key="i">
     <img :src="property.image" class="room-img">
-    <h4 @click="modal = true">{{property.title}}</h4>
-    <p>{{property.price}} pounds</p>
-    <button @click="nums[0] +=1">Report</button><span> Reported: {{ nums[0] }}</span>
+    <h4 @click="modal = true; opened=i">{{ property.title }}</h4>
+    <p>{{ property.price }} pounds</p>
+    <button @click="nums[i] += 1">Report</button><span> Reported: {{ nums[i] }}</span>
   </div>
 
   <!-- @mouseover: vue-on 은  @으로 대체 가능. event handler -->
@@ -30,7 +33,7 @@ export default {
     return {
       properties: data,
       modal: false,
-      nums: [0, 0, 0],
+      nums: [0, 0, 0, 0, 0],
       nav: ['Home', 'Shop', 'About'],
       listings: ['Canary Wharf', 'Bermondsey', 'Islington'],
       // styles: ['color: blue', 'color: red', 'color: green'],
@@ -38,9 +41,9 @@ export default {
   },
   // 함수 만드는 공간
   methods: {
-    increase() {
-      this.nums += 1;
-    },
+    // increase() {
+    //   this.nums += 1;
+    // },
     close() {
       this.modal = false;
     }
@@ -60,8 +63,9 @@ div {
 }
 
 .black-bg {
-  width: 100%; height: 100%;
-  background: rbga(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  background: rbga(0, 0, 0, 0.5);
   position: fixed;
   padding: 20px;
 }
