@@ -1,17 +1,17 @@
 <template>
-  <div v-for="(property, i) in properties" :key="i">
-    <img :src="property.image" class="room-img">
-    <h4 @click="modal=true; opened=i">{{ property.title }}</h4>
+    <img :src="property.image" class="room-img" />
+    <p>{{ property.title }}</p>
     <p>{{ property.price }} pounds</p>
-    <button @click="nums[i] += 1">Report</button><span> Reported: {{ nums[i] }}</span>
-  </div>
-
+    <!-- <button @click="nums[i] += 1">Report</button
+    ><span> Reported: {{ nums[i] }}</span> -->
 </template>
 
 <script>
 export default {
-    name: 'Card-banner',
-}
+  props: {
+    property: Object,
+  }
+  };
 </script>
 
 <style></style>

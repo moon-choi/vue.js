@@ -1,17 +1,17 @@
 <template>
   <Modal :properties="properties" :opened="opened" :modal="modal"/>
 
+  <!-- <Discount :data="[]" v-bind="obj"/> -->
   <Discount/>
-
-  <Card :modal="modal" :opened="opened"/>
+  <Card :property="properties[i]" v-for="(property, i) in properties" :key="property"/>
 
   <!-- @mouseover: vue-on 은  @으로 대체 가능. event handler -->
 </template>
 
 <script>
-import listings from '../properties.js';
-import Discount from './components/Discount.vue.js'; //1. import하기
-import Modal from './components/Modal.vue.js';
+import listings from './properties.js';
+import Discount from './components/Discount.vue'; //1. import하기
+import Modal from './components/Modal.vue';
 import Card from './components/Card.vue';
 // import Menu from './components/Menu.vue';
 
@@ -19,6 +19,7 @@ export default {
   name: "App",
   data() {
     return {
+      obj: { name: "Moon", age: 31 },
       properties: listings,
       modal: false,
       nums: [0, 0, 0, 0, 0],
