@@ -15,6 +15,11 @@
 <script>
 export default {
     name: 'Modal-banner',
+    props: {
+        properties: Array, // 형식 적어주기
+        opened: Number,
+        modal: Boolean,
+    },
 }
 </script>
 

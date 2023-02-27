@@ -1,31 +1,25 @@
 <template>
-  <Modal/>
-  <div class="menu">
-    <a v-for="(link) in nav" :key="link">{{ link }}</a>
-  </div>
+  <Modal :properties="properties" :opened="opened" :modal="modal"/>
 
   <Discount/>
 
-  <div v-for="(property, i) in properties" :key="i">
-    <img :src="property.image" class="room-img">
-    <h4 @click="modal = true; opened=i">{{ property.title }}</h4>
-    <p>{{ property.price }} pounds</p>
-    <button @click="nums[i] += 1">Report</button><span> Reported: {{ nums[i] }}</span>
-  </div>
+  <Card :modal="modal" :opened="opened"/>
 
   <!-- @mouseover: vue-on 은  @으로 대체 가능. event handler -->
 </template>
 
 <script>
-import data from './properties.js';
-import Discount from './Discount.vue'; //1. import하기
-import Modal from './Modal.vue';
+import listings from '../properties.js';
+import Discount from './components/Discount.vue.js'; //1. import하기
+import Modal from './components/Modal.vue.js';
+import Card from './components/Card.vue';
+// import Menu from './components/Menu.vue';
 
 export default {
   name: "App",
   data() {
     return {
-      properties: data,
+      properties: listings,
       modal: false,
       nums: [0, 0, 0, 0, 0],
       nav: ['Home', 'Shop', 'About'],
@@ -35,9 +29,6 @@ export default {
   },
   // 함수 만드는 공간
   methods: {
-    // increase() {
-    //   this.nums += 1;
-    // },
     close() {
       this.modal = false;
     }
@@ -46,6 +37,8 @@ export default {
   components: {
     Modal,
     Discount,
+    Card,
+    // Menu,
   },
 };
 </script>
