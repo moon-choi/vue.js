@@ -4,42 +4,45 @@
   <div class="black-bg" v-if="modal == true"> 
     <!-- if 조건식이 참일때만 밑이 나옴. -->
     <div class="white-bg">
-
+<button @click="close">X</button>
     </div>
   </div>
   <div class="menu">
     <a v-for="(a) in nav" :key="a">{{ a }}</a>
   </div>
-
+<div>{{ data }}</div>
   <div>
     <img src="./assets/room0.jpg" class="room-img">
-    <h4 @click="modal = true">{{listings[0]}}</h4>
-    <p>1250 pounds</p>
+    <h4 @click="modal = true">{{properties[0].title}}</h4>
+    <p>{{properties[0].price}} pounds</p>
     <button @click="nums[0] +=1">Report</button><span> Reported: {{ nums[0] }}</span>
-  </div>
+  </div> 
   <!-- @mouseover -->
   <!-- vue-on 은  @으로 대체 가능. event handler -->
 
   <div>
     <img src="./assets/room1.jpg" class="room-img">
-    <h4>{{listings[1]}}</h4>
-    <p>1300 pounds</p>
+    <h4 @click="modal = true">{{properties[1].title}}</h4>
+    <p>{{properties[1].price}} pounds</p>
     <button @click="nums[1] +=1">Report</button><span> Reported: {{ nums[1] }}</span>
   </div>
-
+  
   <div>
     <img src="./assets/room2.jpg" class="room-img">
-    <h4>{{listings[2]}}</h4>
-    <p>1100 pounds</p>
+    <h4 @click="modal = true">{{properties[2].title}}</h4>
+    <p>{{properties[2].price}} pounds</p>
     <button @click="nums[2] +=1">Report</button><span> Reported: {{ nums[2] }}</span>
   </div>
 </template>
 
 <script>
+import data from './properties.js'
+
 export default {
   name: "App",
   data() {
     return {
+      properties: data,
       modal: false,
       nums: [0, 0, 0],
       nav: ['Home', 'Shop', 'About'],
@@ -51,10 +54,12 @@ export default {
   methods: {
     increase() {
       this.nums += 1;
+    },
+    close() {
+      this.modal = false;
     }
   },
   components: {
-
   },
 };
 </script>
